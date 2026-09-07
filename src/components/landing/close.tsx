@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function Close() {
   return (
@@ -14,20 +15,22 @@ export function Close() {
           </p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row">
-          <Button
-            render={<a href="#markets" />}
-            className="h-10 rounded-md px-4"
+          <a
+            href="#markets"
+            className={cn(buttonVariants(), "h-10 rounded-md px-4")}
           >
             Launch Orakly
             <ArrowRight data-icon="inline-end" />
-          </Button>
-          <Button
-            variant="outline"
-            render={<a href="#thesis" />}
-            className="h-10 rounded-md px-4"
+          </a>
+          <a
+            href="#thesis"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "h-10 rounded-md px-4"
+            )}
           >
             Back to thesis
-          </Button>
+          </a>
         </div>
       </div>
     </section>

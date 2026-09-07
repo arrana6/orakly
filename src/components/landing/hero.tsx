@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { challenges } from "@/lib/content";
+import { cn } from "@/lib/utils";
 import { ForecastWidget } from "./forecast-widget";
 
 export function Hero() {
@@ -20,20 +21,22 @@ export function Hero() {
             staked. Rank comes from being right.
           </p>
           <div className="mt-8 flex flex-col gap-2 sm:flex-row">
-            <Button
-              render={<a href="#markets" />}
-              className="h-10 rounded-md px-4"
+            <a
+              href="#markets"
+              className={cn(buttonVariants(), "h-10 rounded-md px-4")}
             >
               Open markets
               <ArrowRight data-icon="inline-end" />
-            </Button>
-            <Button
-              variant="outline"
-              render={<a href="#agents" />}
-              className="h-10 rounded-md px-4"
+            </a>
+            <a
+              href="#agents"
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "h-10 rounded-md px-4"
+              )}
             >
               How agents work
-            </Button>
+            </a>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
             Free entry · Rewards for performance · Robinhood Chain

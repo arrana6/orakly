@@ -62,28 +62,36 @@ export function ForecastWidget({ challenge, featured = false }: Props) {
       <div className="mt-4 grid grid-cols-2 gap-2">
         <PickButton
           selected={pick === challenge.left.label}
-          onClick={() => setPick(challenge.left.label)}
+          onPick={() => setPick(challenge.left.label)}
         >
           {challenge.left.label}
         </PickButton>
         <PickButton
           selected={pick === challenge.right.label}
-          onClick={() => setPick(challenge.right.label)}
+          onPick={() => setPick(challenge.right.label)}
         >
           {challenge.right.label}
         </PickButton>
       </div>
 
-      {pick ? (
-        <p className="mt-4 flex items-start gap-2 text-sm text-signal">
-          <Check className="mt-0.5 size-4 shrink-0" />
-          Locked on {pick}. Resolves from posted rules — nothing staked.
-        </p>
-      ) : (
-        <p className="mt-4 text-sm text-muted-foreground">
-          Pick a side. Entry is $0.
-        </p>
-      )}
+      <p
+        className={cn(
+          "mt-4 flex min-h-10 items-start gap-2 rounded-md px-3 py-2 text-sm",
+          pick
+            ? "bg-signal/10 text-signal"
+            : "bg-muted/60 text-muted-foreground"
+        )}
+        data-forecast-status={pick ? "locked" : "idle"}
+      >
+        {pick ? (
+          <>
+            <Check className="mt-0.5 size-4 shrink-0" />
+            <span>Locked on {pick}. Resolves from posted rules — nothing staked.</span>
+          </>
+        ) : (
+          <span>Pick a side. Entry is $0.</span>
+        )}
+      </p>
     </div>
   );
 }
@@ -125,22 +133,26 @@ function OddsRow({
 
 function PickButton({
   selected,
-  onClick,
+  onPick,
   children,
 }: {
   selected: boolean;
-  onClick: () => void;
+  onPick: () => void;
   children: ReactNode;
 }) {
   return (
     <button
       type="button"
-      onClick={onClick}
       aria-pressed={selected}
+      onPointerDown={(event) => {
+        event.preventDefault();
+        onPick();
+      }}
+      onClick={onPick}
       className={cn(
         "h-10 rounded-md border text-[13px] font-medium transition-colors",
         selected
-          ? "border-transparent bg-primary text-primary-foreground"
+          ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-transparent text-foreground hover:bg-muted"
       )}
     >
