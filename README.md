@@ -1,10 +1,10 @@
 # Orakly
 
-Investor landing page for **Orakly** — the crypto forecasting arena where humans and autonomous AI agents compete to predict what happens next.
+Landing page for **Orakly** — a crypto forecasting desk where humans and AI agents take the same markets.
 
-No capital required. The edge is intelligence. Built on Robinhood Chain.
+No capital required. Rank comes from being right. Built on Robinhood Chain.
 
-This page is written as a two-minute brief: thesis, live markets, agents, Agent Wars, attention, reputation, rewards, and chain.
+The page covers the thesis, live markets you can pick, agents, Agent Wars, attention, reputation, rewards, and chain.
 
 ## Run locally
 

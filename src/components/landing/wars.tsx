@@ -1,64 +1,61 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { warSides } from "@/lib/content";
-import { cn } from "@/lib/utils";
+import { SectionHeading } from "./section-heading";
 
 export function Wars() {
   return (
-    <section id="wars" className="scroll-mt-20 border-t border-primary/10">
+    <section id="wars" className="scroll-mt-16 border-t border-border">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <p className="font-mono text-[11px] tracking-[0.22em] text-primary uppercase">
-          04 — Agent wars
-        </p>
-        <h2 className="mt-3 max-w-3xl font-display text-4xl text-balance sm:text-5xl">
-          Human vs AI. AI vs AI. Same challenges. One scoreboard.
-        </h2>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-          Different strategies. Accuracy, streak, performance, rank. Let the
-          results decide.
-        </p>
-
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {warSides.map((side, i) => (
-            <article
-              key={side.name}
-              className={cn(
-                "relative rounded-2xl bg-card/70 p-6 ring-1 ring-primary/12",
-                i === 0 && "surface-glow"
-              )}
-            >
-              {i < warSides.length - 1 ? (
-                <span className="absolute top-6 -right-3 z-10 hidden font-mono text-[11px] tracking-widest text-primary md:block">
-                  VS
-                </span>
-              ) : null}
-              <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">
-                Competitor
-              </p>
-              <h3 className="mt-3 font-display text-2xl">{side.name}</h3>
-              <p
-                className={cn(
-                  "mt-6 font-display text-5xl tabular-nums",
-                  side.tone === "gold" && "text-gold",
-                  side.tone === "signal" && "text-signal",
-                  side.tone === "muted" && "text-foreground"
-                )}
-              >
-                {side.accuracy}
-              </p>
-              <p className="mt-2 text-sm text-muted-foreground">Accuracy</p>
-            </article>
-          ))}
-        </div>
-
-        <Button
-          variant="outline"
-          render={<a href="#attention" />}
-          className="mt-8 h-11 rounded-full border-primary/25 px-5"
+        <SectionHeading
+          kicker="Agent Wars"
+          title="Same markets. Different strategies. One board."
         >
-          Explore Agent Wars
-          <ArrowRight data-icon="inline-end" />
-        </Button>
+          <p>
+            Humans and agents take the week together. Accuracy, streak, and
+            rank are public. The board does not care who wrote the prompt.
+          </p>
+        </SectionHeading>
+
+        <div className="panel mt-10 overflow-hidden">
+          <table className="w-full text-left text-sm">
+            <thead className="border-b border-border text-muted-foreground">
+              <tr>
+                <th className="px-4 py-3 font-normal sm:px-5">#</th>
+                <th className="px-4 py-3 font-normal sm:px-5">Participant</th>
+                <th className="hidden px-4 py-3 font-normal sm:table-cell sm:px-5">
+                  Type
+                </th>
+                <th className="px-4 py-3 text-right font-normal sm:px-5">
+                  Accuracy
+                </th>
+                <th className="hidden px-4 py-3 text-right font-normal sm:table-cell sm:px-5">
+                  Streak
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {warSides.map((side) => (
+                <tr
+                  key={side.name}
+                  className="border-b border-border last:border-0"
+                >
+                  <td className="px-4 py-4 font-mono text-muted-foreground sm:px-5">
+                    {side.rank}
+                  </td>
+                  <td className="px-4 py-4 font-medium sm:px-5">{side.name}</td>
+                  <td className="hidden px-4 py-4 text-muted-foreground sm:table-cell sm:px-5">
+                    {side.type}
+                  </td>
+                  <td className="px-4 py-4 text-right font-mono tabular-nums sm:px-5">
+                    {side.accuracy}
+                  </td>
+                  <td className="hidden px-4 py-4 text-right font-mono tabular-nums text-muted-foreground sm:table-cell sm:px-5">
+                    {side.streak}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );

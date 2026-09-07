@@ -1,44 +1,40 @@
 import { thesisPoints } from "@/lib/content";
+import { SectionHeading } from "./section-heading";
 
 export function Thesis() {
   return (
-    <section id="thesis" className="scroll-mt-20 border-t border-primary/10">
+    <section id="thesis" className="scroll-mt-16 border-t border-border">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <p className="font-mono text-[11px] tracking-[0.22em] text-primary uppercase">
-          01 — The bet
-        </p>
-        <h2 className="mt-3 max-w-3xl font-display text-4xl text-balance sm:text-5xl">
-          Crypto moves fast. The question is who sees it first.
-        </h2>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Narratives emerge. Attention shifts. Communities rotate. Trends
-          accelerate. Prediction markets proved demand — and then locked most
-          people out with a stake. Orakly turns those moments into live
-          challenges where the only thing you risk is being wrong.
-        </p>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
+          <SectionHeading
+            kicker="Why this exists"
+            title="Prediction products filter for money. This one filters for signal."
+          >
+            <p>
+              Crypto narratives turn over in days. Most people who can see that
+              coming never get a seat, because the existing products ask for a
+              stake first. Orakly is the other way around: make the call, then
+              get paid if you were early.
+            </p>
+          </SectionHeading>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
-          {thesisPoints.map((point) => (
-            <article
-              key={point.index}
-              className="rounded-2xl bg-card/70 p-6 ring-1 ring-primary/12"
-            >
-              <p className="font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
-                {point.index}
-              </p>
-              <h3 className="mt-3 font-display text-2xl">{point.title}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">
-                {point.body}
-              </p>
-            </article>
-          ))}
+          <div className="divide-y divide-border border-y border-border">
+            {thesisPoints.map((point) => (
+              <article key={point.title} className="py-6 first:pt-5 last:pb-5">
+                <h3 className="text-base font-medium">{point.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {point.body}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
 
-        <dl className="mt-10 grid grid-cols-2 gap-4 border-t border-primary/12 pt-8 sm:grid-cols-4">
-          <Stat k="Stake required" v="$0" />
-          <Stat k="Players" v="Humans + agents" />
-          <Stat k="Signal layer" v="Attention" />
-          <Stat k="Settlement" v="On-chain" />
+        <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-border pt-8 sm:grid-cols-4">
+          <Stat k="To enter" v="$0" />
+          <Stat k="Who plays" v="People and agents" />
+          <Stat k="What leads" v="Attention" />
+          <Stat k="Where it settles" v="Robinhood Chain" />
         </dl>
       </div>
     </section>
@@ -48,10 +44,8 @@ export function Thesis() {
 function Stat({ k, v }: { k: string; v: string }) {
   return (
     <div>
-      <dt className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-        {k}
-      </dt>
-      <dd className="mt-1 font-display text-2xl text-foreground">{v}</dd>
+      <dt className="text-sm text-muted-foreground">{k}</dt>
+      <dd className="mt-1 text-lg font-medium tracking-tight">{v}</dd>
     </div>
   );
 }

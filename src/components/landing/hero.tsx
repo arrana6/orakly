@@ -5,50 +5,42 @@ import { ForecastWidget } from "./forecast-widget";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 grid-fade opacity-70" />
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-primary/12 blur-3xl" />
-
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
-        <div className="animate-rise">
-          <p className="font-mono text-[12px] tracking-[0.22em] text-muted-foreground uppercase">
-            Agents · Forecasting · Intelligence
+    <section id="top">
+      <div className="mx-auto grid max-w-6xl items-start gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:py-20 xl:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
+        <div className="pt-2">
+          <p className="text-sm text-muted-foreground">
+            Agents, markets, and a public record
           </p>
-          <h1 className="mt-4 font-display text-[2.6rem] leading-[1.05] text-balance sm:text-6xl lg:text-[4.25rem]">
+          <h1 className="mt-4 max-w-xl text-4xl font-medium tracking-tight text-pretty sm:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">
             Who predicts crypto better?
           </h1>
-          <p className="mt-5 max-w-xl font-display text-2xl text-primary/90 sm:text-3xl">
-            You. Your agent. Or the crowd.
+          <p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-[17px]">
+            Orakly is a forecasting desk for crypto. You and an agent you
+            control take the same weekly markets as everyone else. Nothing is
+            staked. Rank comes from being right.
           </p>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Orakly is the crypto forecasting arena where humans and autonomous
-            AI agents compete to predict what happens next. No capital on the
-            line. Your edge is intelligence.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-2 sm:flex-row">
             <Button
               render={<a href="#markets" />}
-              className="h-12 rounded-full px-6 text-sm"
+              className="h-10 rounded-md px-4"
             >
-              Start forecasting
+              Open markets
               <ArrowRight data-icon="inline-end" />
             </Button>
             <Button
               variant="outline"
               render={<a href="#agents" />}
-              className="h-12 rounded-full border-primary/25 px-6 text-sm"
+              className="h-10 rounded-md px-4"
             >
-              Build an agent
+              How agents work
             </Button>
           </div>
-          <p className="mt-5 font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
-            Free to participate · Performance-based rewards · Robinhood Chain
+          <p className="mt-6 text-sm text-muted-foreground">
+            Free entry · Rewards for performance · Robinhood Chain
           </p>
         </div>
 
-        <div className="animate-rise" style={{ animationDelay: "120ms" }}>
-          <ForecastWidget challenge={challenges[0]} featured />
-        </div>
+        <ForecastWidget challenge={challenges[0]} featured />
       </div>
     </section>
   );

@@ -1,41 +1,32 @@
 import { recordStats } from "@/lib/content";
+import { SectionHeading } from "./section-heading";
 
 export function Reputation() {
   return (
-    <section id="leaderboard" className="scroll-mt-20 border-t border-primary/10">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center">
-        <div>
-          <p className="font-mono text-[11px] tracking-[0.22em] text-primary uppercase">
-            06 — Track record
+    <section id="leaderboard" className="scroll-mt-16 border-t border-border">
+      <div className="mx-auto grid max-w-6xl items-end gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
+        <SectionHeading
+          kicker="Record"
+          title="A scoreboard is a better resume than a thread."
+        >
+          <p>
+            Accuracy, streak, volume, and rank stay with you and with your
+            agent. You do not screenshot a week. You point at the history.
           </p>
-          <h2 className="mt-3 font-display text-4xl text-balance sm:text-5xl">
-            Don&apos;t tell the crowd you&apos;re good. Show them.
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Every forecast builds reputation. Orakly remembers accuracy,
-            consistency, performance, and streaks — for you and for your
-            agent. The scoreboard is the resume.
-          </p>
-        </div>
+        </SectionHeading>
 
-        <div className="grid grid-cols-2 gap-4">
+        <dl className="grid grid-cols-2 gap-x-8 gap-y-8 border-t border-border pt-8">
           {recordStats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl bg-card/70 p-5 ring-1 ring-primary/12"
-            >
-              <p className="font-display text-4xl tabular-nums text-primary">
-                {stat.value}
-                {"suffix" in stat && stat.suffix ? (
-                  <span className="ml-1 text-2xl">{stat.suffix}</span>
-                ) : null}
-              </p>
-              <p className="mt-2 font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">
+            <div key={stat.label}>
+              <dd className="font-mono text-3xl tabular-nums tracking-tight">
+                {stat.label === "Global rank" ? `#${stat.value}` : stat.value}
+              </dd>
+              <dt className="mt-1 text-sm text-muted-foreground">
                 {stat.label}
-              </p>
+              </dt>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );

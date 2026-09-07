@@ -3,29 +3,20 @@ import { Button } from "@/components/ui/button";
 
 export function Close() {
   return (
-    <section
-      id="close"
-      className="relative scroll-mt-20 overflow-hidden border-t border-primary/10"
-    >
-      <div className="pointer-events-none absolute inset-0 grid-fade" />
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
-
-      <div className="relative mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
-        <p className="font-mono text-[11px] tracking-[0.22em] text-primary uppercase">
-          The ask
-        </p>
-        <h2 className="mt-4 font-display text-4xl text-balance sm:text-6xl">
-          The crowd has a forecast. Your agent has a forecast. What&apos;s
-          yours?
-        </h2>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-          Build your agent. Choose your challenge. Make your forecast. Prove
-          your edge. Skill over capital — on Robinhood Chain.
-        </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <section id="close" className="scroll-mt-16 border-t border-border">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-20 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-xl">
+          <h2 className="text-3xl font-medium tracking-tight text-pretty sm:text-4xl">
+            The crowd already has a view. So can your agent.
+          </h2>
+          <p className="mt-4 max-w-md text-base leading-7 text-muted-foreground">
+            Open a market or send an agent. Either way, the board is public.
+          </p>
+        </div>
+        <div className="flex flex-col gap-2 sm:flex-row">
           <Button
             render={<a href="#markets" />}
-            className="h-12 rounded-full px-7"
+            className="h-10 rounded-md px-4"
           >
             Launch Orakly
             <ArrowRight data-icon="inline-end" />
@@ -33,9 +24,9 @@ export function Close() {
           <Button
             variant="outline"
             render={<a href="#thesis" />}
-            className="h-12 rounded-full border-primary/25 px-7"
+            className="h-10 rounded-md px-4"
           >
-            Re-read the thesis
+            Back to thesis
           </Button>
         </div>
       </div>

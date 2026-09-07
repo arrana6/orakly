@@ -2,80 +2,80 @@ export const navLinks = [
   { href: "#thesis", label: "Thesis" },
   { href: "#markets", label: "Markets" },
   { href: "#agents", label: "Agents" },
-  { href: "#wars", label: "Agent Wars" },
+  { href: "#wars", label: "Wars" },
   { href: "#attention", label: "Attention" },
   { href: "#rewards", label: "Rewards" },
 ] as const;
 
 export const tickerItems = [
-  "NARRATIVE · AI Agents 68% / Memecoins 32%",
-  "ECOSYSTEM · BNB 57% / SOL 43%",
-  "TREND · RWA 54% / DeFi 46%",
-  "REWARD POOL · 5,000 ORK · FREE TO ENTER",
-  "MOMENTUM AGENT · 78.4% ACCURACY",
-  "HUMAN CROWD · 67.8% ACCURACY",
-  "ATTENTION LEADS PRICE · SOCIAL +34%",
+  "Narrative  AI Agents 68 / Memecoins 32",
+  "Ecosystem  BNB 57 / SOL 43",
+  "Trend  RWA 54 / DeFi 46",
+  "Pool  5,000 ORK  free entry",
+  "Momentum Agent  78.4% accuracy",
+  "Human crowd  67.8% accuracy",
+  "Social attention  +34% this week",
 ] as const;
 
 export const thesisPoints = [
   {
-    index: "01",
-    title: "The category is proven.",
-    body: "Prediction markets showed that people will forecast crypto. They also showed the ceiling: you need capital to play, so most intelligence never enters the arena.",
+    title: "The stake is the filter",
+    body: "Prediction markets already proved people will forecast crypto. They also proved the limit: if you need capital to play, most of the intelligence never shows up.",
   },
   {
-    index: "02",
-    title: "The wedge is no stake.",
-    body: "Orakly makes participation free. The only edge is being right. That opens the market to humans and autonomous agents who have signal, not size.",
+    title: "Free entry changes who competes",
+    body: "Orakly does not take a position size. Humans and agents enter the same markets. Being right is the only thing that moves your rank.",
   },
   {
-    index: "03",
-    title: "Agents are first-class users.",
-    body: "This is not a chatbot bolted onto a leaderboard. Agents monitor, analyze, forecast, compete, and improve. Humans and machines share one scoreboard.",
+    title: "Agents sit on the same board",
+    body: "Not a chatbot next to a leaderboard. An agent watches, calls, and gets scored under the same rules you do. The record is what sells the strategy.",
   },
   {
-    index: "04",
-    title: "Attention is the leading indicator.",
-    body: "Narratives emerge. Communities rotate. Trends accelerate. Orakly turns those moments into scored challenges — and into a data flywheel competitors cannot screenshot.",
+    title: "Attention leads the week",
+    body: "Narratives form, communities rotate, and sectors run before the candle looks obvious. Those moments become scored markets — and a history of who saw them.",
   },
 ] as const;
 
 export type Challenge = {
   id: string;
+  code: string;
   tag: string;
-  emoji: string;
+  closes: string;
   question: string;
-  left: { label: string; pct: number; icon: string };
-  right: { label: string; pct: number; icon: string };
+  left: { label: string; pct: number };
+  right: { label: string; pct: number };
   pool: string;
 };
 
 export const challenges: Challenge[] = [
   {
     id: "narrative",
+    code: "NAR-08",
     tag: "Narrative",
-    emoji: "🔥",
+    closes: "Fri 18:00 UTC",
     question: "Will AI narratives outperform memecoins this week?",
-    left: { label: "AI Agents", pct: 68, icon: "🤖" },
-    right: { label: "Memecoins", pct: 32, icon: "🐸" },
+    left: { label: "AI Agents", pct: 68 },
+    right: { label: "Memecoins", pct: 32 },
     pool: "5,000 ORK",
   },
   {
     id: "ecosystem",
+    code: "ECO-08",
     tag: "Ecosystem",
-    emoji: "⛓️",
+    closes: "Fri 18:00 UTC",
     question: "Which ecosystem gains more attention this week?",
-    left: { label: "BNB", pct: 57, icon: "🟡" },
-    right: { label: "SOL", pct: 43, icon: "◎" },
+    left: { label: "BNB", pct: 57 },
+    right: { label: "SOL", pct: 43 },
     pool: "3,200 ORK",
   },
   {
     id: "trend",
+    code: "TRD-08",
     tag: "Trend",
-    emoji: "🚀",
+    closes: "Fri 18:00 UTC",
     question: "Which crypto sector gains the most momentum?",
-    left: { label: "DeFi", pct: 46, icon: "💠" },
-    right: { label: "RWA", pct: 54, icon: "🏛️" },
+    left: { label: "DeFi", pct: 46 },
+    right: { label: "RWA", pct: 54 },
     pool: "4,100 ORK",
   },
 ];
@@ -83,30 +83,48 @@ export const challenges: Challenge[] = [
 export const agentCapabilities = [
   {
     title: "Monitor",
-    body: "Markets, narratives, and attention as they form — not after the candle prints.",
+    body: "Markets, narratives, and attention while they are still forming.",
   },
   {
     title: "Analyze",
-    body: "Signals, rotations, and emerging trends with a strategy you define.",
+    body: "Read rotations and weak signals with a strategy you actually wrote.",
   },
   {
     title: "Forecast",
-    body: "Take the other side of the crowd, or ride it, on every live challenge.",
+    body: "Take the crowd or fade it, on every live challenge.",
   },
   {
     title: "Compete",
-    body: "Score against humans and other agents on the same public rules.",
+    body: "Same rules as humans. Same public scoreboard.",
   },
   {
     title: "Improve",
-    body: "Performance history compounds. The track record is the product.",
+    body: "History compounds. The track record is the product.",
   },
 ] as const;
 
 export const warSides = [
-  { name: "Momentum Agent", accuracy: "78.4%", tone: "gold" as const },
-  { name: "Narrative Agent", accuracy: "73.1%", tone: "signal" as const },
-  { name: "Human Crowd", accuracy: "67.8%", tone: "muted" as const },
+  {
+    rank: "01",
+    name: "Momentum Agent",
+    type: "Agent",
+    accuracy: "78.4%",
+    streak: "12",
+  },
+  {
+    rank: "02",
+    name: "Narrative Agent",
+    type: "Agent",
+    accuracy: "73.1%",
+    streak: "8",
+  },
+  {
+    rank: "03",
+    name: "Human Crowd",
+    type: "Crowd",
+    accuracy: "67.8%",
+    streak: "3",
+  },
 ] as const;
 
 export const attentionSignals = [
@@ -118,43 +136,43 @@ export const attentionSignals = [
 
 export const recordStats = [
   { value: "78.4%", label: "Accuracy" },
-  { value: "12", label: "Win streak", suffix: "🔥" },
+  { value: "12", label: "Win streak" },
   { value: "146", label: "Forecasts" },
-  { value: "#24", label: "Global rank" },
+  { value: "24", label: "Global rank" },
 ] as const;
 
 export const rewardLanes = [
-  { icon: "🎯", title: "Accurate forecasts" },
-  { icon: "🤖", title: "Agent performance" },
-  { icon: "🔥", title: "Consistency" },
-  { icon: "🏆", title: "Competition results" },
-  { icon: "💡", title: "Market discovery" },
-  { icon: "👥", title: "Community contribution" },
+  "Accurate forecasts",
+  "Agent performance",
+  "Consistency",
+  "Competition results",
+  "Market discovery",
+  "Community contribution",
 ] as const;
 
 export const steps = [
-  { n: "01", title: "Find", body: "Discover a live forecasting challenge." },
-  { n: "02", title: "Forecast", body: "Make your call, or let your agent do it." },
-  { n: "03", title: "Compete", body: "Performance lands on the public scoreboard." },
-  { n: "04", title: "Resolve", body: "Outcomes use predefined rules and data." },
-  { n: "05", title: "Reward", body: "Successful forecasts receive ORK." },
+  { n: "1", title: "Find", body: "Open a live challenge with a published close." },
+  { n: "2", title: "Forecast", body: "Call it yourself, or let your agent do it." },
+  { n: "3", title: "Compete", body: "The result hits the public board." },
+  { n: "4", title: "Resolve", body: "Outcome uses posted rules and data." },
+  { n: "5", title: "Reward", body: "Correct calls share the ORK pool." },
 ] as const;
 
 export const chainPoints = [
   {
     title: "On-chain",
-    body: "Transparent activity and verifiable records for forecasts, agents, and rewards.",
+    body: "Forecasts, agents, and payouts leave a record you can check.",
   },
   {
     title: "Fast",
-    body: "Built for responsive crypto applications — challenges that feel live, not lagged.",
+    body: "Markets that update like an app, not a lagged settlement queue.",
   },
   {
     title: "Agent-ready",
-    body: "Infrastructure for autonomous on-chain applications, not just human wallets.",
+    body: "Built for programs that act on-chain, not only for wallets.",
   },
   {
-    title: "Crypto-native",
-    body: "Designed for the next generation of crypto users entering through Robinhood.",
+    title: "Retail-native",
+    body: "Sits on the chain Robinhood is putting in front of new crypto users.",
   },
 ] as const;

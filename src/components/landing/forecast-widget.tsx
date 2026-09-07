@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Check } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Challenge } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -18,31 +17,26 @@ export function ForecastWidget({ challenge, featured = false }: Props) {
   return (
     <div
       className={cn(
-        "flex h-full flex-col rounded-2xl bg-card/80 p-5 ring-1 ring-primary/15 backdrop-blur-sm",
-        featured && "surface-glow p-6 sm:p-7"
+        "panel flex h-full flex-col p-5",
+        featured && "p-6 sm:p-7"
       )}
     >
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-live rounded-full bg-signal" />
-          </span>
-          <span className="font-mono text-[11px] tracking-[0.16em] text-signal uppercase">
-            Live forecast
-          </span>
-        </div>
-        <Badge
-          variant="outline"
-          className="border-primary/25 bg-primary/8 font-mono text-[10px] tracking-wider text-primary uppercase"
-        >
-          {challenge.emoji} {challenge.tag}
-        </Badge>
+      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+        <span className="inline-flex items-center gap-2">
+          <span className="size-1.5 animate-live rounded-full bg-signal" />
+          Live
+          <span className="text-foreground/40">/</span>
+          <span className="font-mono">{challenge.code}</span>
+        </span>
+        <span>
+          {challenge.tag} · closes {challenge.closes}
+        </span>
       </div>
 
       <h3
         className={cn(
-          "mt-4 font-display text-xl leading-snug text-balance text-foreground",
-          featured && "text-2xl sm:text-[1.7rem]"
+          "mt-4 text-lg font-medium leading-snug tracking-tight",
+          featured && "text-xl sm:text-2xl"
         )}
       >
         {challenge.question}
@@ -51,53 +45,44 @@ export function ForecastWidget({ challenge, featured = false }: Props) {
       <div className="mt-6 space-y-3">
         <OddsRow
           label={challenge.left.label}
-          icon={challenge.left.icon}
           pct={challenge.left.pct}
-          tone="gold"
+          tone="primary"
         />
         <OddsRow
           label={challenge.right.label}
-          icon={challenge.right.icon}
           pct={challenge.right.pct}
           tone="signal"
         />
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-3 text-xs">
-        <span className="font-mono tracking-wider text-muted-foreground uppercase">
-          Participation · Free
-        </span>
-        <span className="font-mono text-primary">
-          Reward pool {challenge.pool}
-        </span>
+      <div className="mt-5 flex items-center justify-between gap-3 text-xs text-muted-foreground">
+        <span>Free to enter</span>
+        <span className="font-mono text-foreground">{challenge.pool}</span>
       </div>
 
-      <p className="mt-5 font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase">
-        Your forecast
-      </p>
-      <div className="mt-2 grid grid-cols-2 gap-2">
+      <div className="mt-4 grid grid-cols-2 gap-2">
         <PickButton
           selected={pick === challenge.left.label}
           onClick={() => setPick(challenge.left.label)}
         >
-          {challenge.left.icon} {challenge.left.label}
+          {challenge.left.label}
         </PickButton>
         <PickButton
           selected={pick === challenge.right.label}
           onClick={() => setPick(challenge.right.label)}
         >
-          {challenge.right.icon} {challenge.right.label}
+          {challenge.right.label}
         </PickButton>
       </div>
 
       {pick ? (
-        <p className="mt-4 flex items-center gap-2 text-sm text-signal">
-          <Check className="size-4" />
-          Forecast locked on {pick}. No capital. Outcome resolves on-chain.
+        <p className="mt-4 flex items-start gap-2 text-sm text-signal">
+          <Check className="mt-0.5 size-4 shrink-0" />
+          Locked on {pick}. Resolves from posted rules — nothing staked.
         </p>
       ) : (
         <p className="mt-4 text-sm text-muted-foreground">
-          Choose a side. $0 to enter. Skill is the only stake.
+          Pick a side. Entry is $0.
         </p>
       )}
     </div>
@@ -106,35 +91,31 @@ export function ForecastWidget({ challenge, featured = false }: Props) {
 
 function OddsRow({
   label,
-  icon,
   pct,
   tone,
 }: {
   label: string;
-  icon: string;
   pct: number;
-  tone: "gold" | "signal";
+  tone: "primary" | "signal";
 }) {
   return (
     <div>
       <div className="mb-1.5 flex items-center justify-between text-sm">
-        <span>
-          {icon} {label}
-        </span>
+        <span>{label}</span>
         <span
           className={cn(
             "font-mono tabular-nums",
-            tone === "gold" ? "text-gold" : "text-signal"
+            tone === "primary" ? "text-primary" : "text-signal"
           )}
         >
           {pct}%
         </span>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
+      <div className="h-1 overflow-hidden bg-secondary">
         <div
           className={cn(
-            "animate-bar h-full rounded-full",
-            tone === "gold" ? "bg-gold" : "bg-signal"
+            "animate-bar h-full",
+            tone === "primary" ? "bg-primary" : "bg-signal"
           )}
           style={{ width: `${pct}%` }}
         />
@@ -158,10 +139,8 @@ function PickButton({
       variant={selected ? "default" : "outline"}
       onClick={onClick}
       className={cn(
-        "h-11 rounded-xl text-[13px]",
-        selected
-          ? "bg-primary text-primary-foreground"
-          : "border-primary/20 bg-background/40 hover:bg-primary/10"
+        "h-10 rounded-md text-[13px]",
+        !selected && "border-border bg-transparent hover:bg-muted"
       )}
     >
       {children}
