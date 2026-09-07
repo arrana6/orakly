@@ -67,10 +67,7 @@ export function SiteHeader() {
                 {link.label}
               </a>
             ))}
-            <LaunchButton
-              onOpen={() => setOpen(false)}
-              className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground"
-            >
+            <LaunchButton className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground">
               Launch
             </LaunchButton>
           </nav>
