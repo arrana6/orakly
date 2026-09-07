@@ -1,14 +1,14 @@
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`inline-flex items-center gap-2.5 ${className}`}>
+    <a href="#top" className={`inline-flex items-center gap-3 ${className}`}>
       <img
         src="/orakly-mark.png"
         alt=""
-        width={32}
-        height={32}
-        className="size-8 object-contain mix-blend-screen"
+        width={48}
+        height={48}
+        className="size-12 object-contain mix-blend-screen"
       />
-      <span className="text-[15px] font-semibold tracking-tight">Orakly</span>
+      <span className="text-2xl font-semibold tracking-tight">Orakly</span>
     </a>
   );
 }

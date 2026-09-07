@@ -17,7 +17,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Logo />
 
         <nav className="hidden items-center gap-5 lg:flex">
@@ -56,7 +56,7 @@ export function SiteHeader() {
       {open ? (
         <div
           id="mobile-nav"
-          className="fixed inset-x-0 top-14 bottom-0 z-50 overflow-y-auto border-t border-border bg-background"
+          className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto border-t border-border bg-background"
         >
           <nav className="mx-auto flex max-w-6xl flex-col px-4 py-4 sm:px-6">
             {navLinks.map((link) => (
