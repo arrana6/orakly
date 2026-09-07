@@ -11,10 +11,7 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
         <div className="animate-rise">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-3 py-1 font-mono text-[11px] tracking-[0.18em] text-primary uppercase">
-            Investor brief · 2 minutes
-          </p>
-          <p className="mt-6 font-mono text-[12px] tracking-[0.22em] text-muted-foreground uppercase">
+          <p className="font-mono text-[12px] tracking-[0.22em] text-muted-foreground uppercase">
             Agents · Forecasting · Intelligence
           </p>
           <h1 className="mt-4 font-display text-[2.6rem] leading-[1.05] text-balance sm:text-6xl lg:text-[4.25rem]">
