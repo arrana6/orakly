@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/content";
+import { LaunchButton } from "./launch-button";
 import { Logo } from "./logo";
 
 export function SiteHeader() {
@@ -33,12 +34,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#markets"
-            className="hidden h-8 items-center rounded-md bg-primary px-3 text-[13px] font-medium text-primary-foreground sm:inline-flex"
-          >
+          <LaunchButton className="hidden h-8 items-center rounded-md bg-primary px-3 text-[13px] font-medium text-primary-foreground sm:inline-flex">
             Launch
-          </a>
+          </LaunchButton>
 
           <button
             type="button"
@@ -69,13 +67,12 @@ export function SiteHeader() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#markets"
-              onClick={() => setOpen(false)}
+            <LaunchButton
+              onOpen={() => setOpen(false)}
               className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground"
             >
               Launch
-            </a>
+            </LaunchButton>
           </nav>
         </div>
       ) : null}

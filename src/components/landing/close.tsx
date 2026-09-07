@@ -1,6 +1,6 @@
-import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { LaunchButton } from "./launch-button";
 
 export function Close() {
   return (
@@ -15,13 +15,9 @@ export function Close() {
           </p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row">
-          <a
-            href="#markets"
-            className={cn(buttonVariants(), "h-10 rounded-md px-4")}
-          >
+          <LaunchButton className={cn(buttonVariants(), "h-10 rounded-md px-4")}>
             Launch Orakly
-            <ArrowRight data-icon="inline-end" />
-          </a>
+          </LaunchButton>
           <a
             href="#thesis"
             className={cn(
