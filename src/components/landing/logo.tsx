@@ -6,7 +6,7 @@ export function Logo({ className = "" }: { className?: string }) {
         alt=""
         width={32}
         height={32}
-        className="size-8 object-contain"
+        className="size-8 object-contain mix-blend-screen"
       />
       <span className="text-[15px] font-semibold tracking-tight">Orakly</span>
     </a>
