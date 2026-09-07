@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import type { Challenge } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -131,19 +130,21 @@ function PickButton({
 }: {
   selected: boolean;
   onClick: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <Button
+    <button
       type="button"
-      variant={selected ? "default" : "outline"}
       onClick={onClick}
+      aria-pressed={selected}
       className={cn(
-        "h-10 rounded-md text-[13px]",
-        !selected && "border-border bg-transparent hover:bg-muted"
+        "h-10 rounded-md border text-[13px] font-medium transition-colors",
+        selected
+          ? "border-transparent bg-primary text-primary-foreground"
+          : "border-border bg-transparent text-foreground hover:bg-muted"
       )}
     >
       {children}
-    </Button>
+    </button>
   );
 }

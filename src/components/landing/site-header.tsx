@@ -1,15 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/content";
 import { Logo } from "./logo";
 
@@ -34,53 +26,48 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button
-            render={<a href="#markets" />}
-            className="hidden h-8 rounded-md px-3 sm:inline-flex"
+          <a
+            href="#markets"
+            className="hidden h-8 items-center rounded-md bg-primary px-3 text-[13px] font-medium text-primary-foreground sm:inline-flex"
           >
             Launch
-          </Button>
+          </a>
 
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger
-              render={
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="lg:hidden"
-                  aria-label="Open menu"
-                />
-              }
-            >
-              <Menu />
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-background">
-              <SheetHeader>
-                <SheetTitle>Orakly</SheetTitle>
-              </SheetHeader>
-              <nav className="flex flex-col gap-1 px-4">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="rounded-md px-3 py-3 text-base text-muted-foreground hover:bg-muted hover:text-foreground"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                <Button
-                  render={<a href="#markets" />}
-                  className="mt-4 h-10 rounded-md"
-                  onClick={() => setOpen(false)}
-                >
-                  Launch
-                </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <button
+            type="button"
+            className="inline-flex size-8 items-center justify-center rounded-md border border-border lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X className="size-4" /> : <Menu className="size-4" />}
+          </button>
         </div>
       </div>
+
+      {open ? (
+        <div className="border-t border-border bg-background lg:hidden">
+          <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="py-3 text-base text-muted-foreground hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#markets"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex h-10 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground"
+            >
+              Launch
+            </a>
+          </nav>
+        </div>
+      ) : null}
     </header>
   );
 }
